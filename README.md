@@ -9,7 +9,7 @@ Description:
 
 # Getting Started
 
-1. Clone this project
+1. Clone this project https://github.com/Valpydeveloper/LinkedInParser.git
 2. Create a Python Virtual Environment: `python3 -m venv venv`
 3. Activate the Python Virtual Environment: `source venv/bin/activate`
 4. Install requirements.txt: `pip install -r requirements.txt`
