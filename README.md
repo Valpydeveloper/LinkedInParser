@@ -1,4 +1,4 @@
-# LinkedIn vacancy parser
+# LinkedIn vacancy parser v.1.1
 Alpha version of my LinkedIn job vacancy parser, utilizing the Scrapy framework.
 
 Description:

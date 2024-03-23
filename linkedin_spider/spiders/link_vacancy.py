@@ -66,9 +66,10 @@ class LinkedJobsSpider(scrapy.Spider):
 
         stop_words = [
             "senior",
-            "(senior)" "middle",
+            "(senior)",
+            "middle",
             "(middle)",
-            "Middle" "expert",
+            "expert",
             "techlead",
             "tech lead",
             "teamlead",
@@ -105,9 +106,9 @@ class LinkedJobsSpider(scrapy.Spider):
         jobs = response.css("li")
 
         num_jobs_returned = len(jobs)
-        print("******* Вакансий найдено *******")
+        print("******* Вакансий обнаружено *******")
         print(num_jobs_returned)
-        print("*****")
+        print("********************************")
 
         for job in jobs:
             vacancy_title = job.css("h3::text").get(default="not-found").strip()
@@ -150,7 +151,7 @@ class LinkedJobsSpider(scrapy.Spider):
         if num_jobs_returned > 0:
             first_job_on_page = int(first_job_on_page) + 25
             next_url = self.api_url + str(first_job_on_page)
-            print(f"Ведётся поиск по странице {first_job_on_page}")
+            print(f"Обработано {first_job_on_page} вакансий")
             yield scrapy.Request(
                 url=next_url,
                 callback=self.parse_job,
@@ -195,7 +196,7 @@ class LinkedJobsSpider(scrapy.Spider):
 
         job_item["description"] = all_text
 
-        with open("vacancy_list3.json", "a", encoding="utf-8") as json_file:
+        with open("vacancy_list.json", "a", encoding="utf-8") as json_file:
             json.dump(job_item, json_file, indent=4, ensure_ascii=False)
 
         yield job_item
